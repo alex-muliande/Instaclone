@@ -10,7 +10,9 @@ body {
   #inline{
     display: inline;
   }
-  
+  .insta{
+    font-family: 'Lobster Two', cursive;
+  }
   ul {
     margin: 0;
     
