@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <h1>Insta Images <i class="fab fa-instagram"></i></h1>
+  <h1>Instagram <i class="fab fa-instagram"></i></h1>
 
 
   <main role="main" class="container">
@@ -23,11 +23,12 @@
           <article class="media content-section">
               <div class="media-body">
                 <div class="article-metadata">
-                  <a class="mr-2" href="#">{{ post.user }}</a>
-                  <small class="text-muted">{{ post.caption }}</small>
+                  <a class="mr-2" href="#">{{ post.profile }}</a>
+                  <!-- <small class="text-muted">{{ post.caption }}</small> -->
                 </div>
-                <h2><a class="article-title" href="#">{{ post. }}</a></h2>
-                <p class="article-content">{{ post.image }}</p>
+                <h2><a class="article-title" href="#">{{ post.image_name }}</a></h2>
+               <img src="{{ post.image.url }}" class= "img-responsive">
+            
               </div>
             </article>
           {% endfor %}
