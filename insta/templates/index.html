@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Insta</title>
+</head>
+
+<body>
+  <h1>Insta Images <i class="fab fa-instagram"></i></h1>
+
+
+  <main role="main" class="container">
+<br>
+    <div class="row">
+      <div class="col-md-8">
+          {% for post in posts%}
+          <article class="media content-section">
+              <div class="media-body">
+                <div class="article-metadata">
+                  <a class="mr-2" href="#">{{ post.user }}</a>
+                  <small class="text-muted">{{ post.caption }}</small>
+                </div>
+                <h2><a class="article-title" href="#">{{ post. }}</a></h2>
+                <p class="article-content">{{ post.image }}</p>
+              </div>
+            </article>
+          {% endfor %}
+      </div>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="col-md-4">
+        <div class="content-section">
+
+          <p class='text-muted' style="text-align: center"> Our Stories.
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-light">Stories</li>
+              <br>
+              <p class='text-muted'>People you can Follow.
+                <li class="list-group-item list-group-item-light">Follow</li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+
+</html>
+{% endblock%}
