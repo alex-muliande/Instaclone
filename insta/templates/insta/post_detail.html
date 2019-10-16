@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Insta</title>
+</head>
+
+<body>
+  <h1 class="insta">Instagram <i class="fab fa-instagram"></i></h1>
+
+
+  <main role="main" class="container">
+<br>
+    <div class="row">
+      <div class="col-md-8">
+       
+          <article class="media content-section">
+            <img  class="rounded-circle article-img" src="{{ user.profile.profile_picture.url}}" alt="hello profile_pic">
+            <!-- <img class="rounded-circle account-img" src="{{user.profile.profile_picture.url}}"> -->
+
+              <div class="media-body">
+                <div class="article-metadata">
+                  <a class="mr-2" href="#">{{ object.profile }}</a>
+                  <small class="text-muted">{{ object.date_posted|date:"F d, Y"}}</small>
+                </div>
+                <h2 class="article-title" >{{ object.image_name }}</h2>
+
+               <img src="{{ post.image.url }}" class= "img-responsive">
+            
+              </div>
+            </article>
+        
+      </div>
+      
+       <div class="col-md-4">
+        <div class="content-section">
+
+          <p class='text-muted' style="text-align: center"> Our Stories.
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-light">Stories</li>
+              <br>
+              <p class='text-muted'>People you can Follow.
+                <li class="list-group-item list-group-item-light">Follow</li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
+{% endblock%}

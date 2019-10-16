@@ -12,30 +12,52 @@
 </head>
 
 <body>
-  <h1 class="insta">Instagram <i class="fab fa-instagram"></i></h1>
 
 
+  <br><br>
   <main role="main" class="container">
-<br>
+    <br>
     <div class="row">
       <div class="col-md-8">
-          {% for post in posts%}
-          <article class="media content-section">
-              <div class="media-body">
-                <div class="article-metadata">
-                  <a class="mr-2" href="#">{{ post.profile }}</a>
-                  <!-- <small class="text-muted">{{ post.caption }}</small> -->
-                </div>
-                <h2><a class="article-title" href="#">{{ post.image_name }}</a></h2>
-               <img src="{{ post.image.url }}" class= "img-responsive">
-            
-              </div>
-            </article>
-          {% endfor %}
+        {% for post in posts%}
+        <article class="media content-section" id="h">
+          <img class="rounded-circle article-img" src="{{ user.profile.profile_picture.url}}" alt="hello profile_pic">
+          <!-- <img class="rounded-circle account-img" src="{{user.profile.profile_picture.url}}"> -->
+
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ post.profile }}</a>
+              <small class="text-muted">{{ post.date_posted|timesince}}</small>
+            </div>
+            <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.image_name }}</a></h2>
+
+
+            <img src="{{post.image.url}}" class="img-responsive" id="image">
+            <br>
+            <p><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.caption }}</a></p>
+            <div class="iconic ml-2">
+              <a class='info' href="{% url 'likePost' post.id %}">
+
+                <i class="fas fa-heart" style="font-size: 30px; margin-left: 15px;margin-top: 15px;"></i>
+
+
+
+              </a><span style="font-size:25px;">{{post.likes.count}}</span>
+
+
+            </div>
+          </div>
+
+
+
+
+        </article>
+
+        {% endfor %}
       </div>
-      
-       <div class="col-md-4">
-        <div class="content-section">
+
+      <div class="col-md-4">
+        <div class="content-section" id="col">
 
           <p class='text-muted' style="text-align: center"> Our Stories.
             <ul class="list-group">
@@ -47,6 +69,7 @@
           </p>
         </div>
       </div>
+
     </div>
   </main>
 
