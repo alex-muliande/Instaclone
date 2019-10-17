@@ -75,7 +75,7 @@ def likePost(request,image_id):
 
 
 @login_required
-def comment(request, post_id):
+def comment(request,redirect, post_id):
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
