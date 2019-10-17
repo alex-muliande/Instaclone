@@ -12,8 +12,8 @@
 </head>
 
 <body>
+  <div class="container">
   <h1 class="insta">Instagram <i class="fab fa-instagram"></i></h1>
-
 
   <main role="main" class="container">
     <br>
@@ -22,45 +22,60 @@
 
         <article class="media content-section">
           <img class="rounded-circle article-img" src="{{ user.profile.profile_picture.url}}" alt="hello profile_pic">
-          <!-- <img class="rounded-circle account-img" src="{{user.profile.profile_picture.url}}"> -->
-
-          <div class="media-body">
-            <div class="article-metadata">
-              <a class="mr-2" href="#">{{ object.profile }}</a>
-              <small class="text-muted">{{ object.date_posted|date:"F d, Y"}}</small>
-              {% if object.user == profile %}
-              <div>
-                  <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
-                  <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
-              </div>
-              {% endif%}
-            </div>
-            <h2 class="article-title">{{ object.image_name }}</h2>
-
-            <img src="{{ post.image.url }}" class="img-responsive">
-
+        
+           <!-- image data -->
+    <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="#">{{ object.profile }}</a>
+          <small class="text-muted">{{ object.date_posted|date:"F d, Y"}}</small>
+          {% if object.user == profile %}
+          <div>
+              <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
+              <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
           </div>
+          {% endif%}
+        </div>
+        <h2 class="article-title">{{ object.image_name }}</h2>
+
+        <img src="{{ post.image.url }}" class="img-responsive" height="400px" width="400px">
+
+      </div>
         </article>
 
+        
       </div>
 
+
+
+      <!-- stories -->
       <div class="col-md-4">
-        <div class="content-section">
-
-          <p class='text-muted' style="text-align: center"> Our Stories.
-            <ul class="list-group">
-              <li class="list-group-item list-group-item-light">Stories</li>
-              <br>
-              <p class='text-muted'>People you can Follow.
-                <li class="list-group-item list-group-item-light">Follow</li>
-            </ul>
-          </p>
+          <div class="content-section">
+  
+            <p class='text-muted' style="text-align: center"> Our Stories.
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-light">Stories</li>
+                <br>
+                <p class='text-muted'>People you can Follow.
+                  <li class="list-group-item list-group-item-light">Follow</li>
+              </ul>
+            </p>
+          </div>
         </div>
-      </div>
-    </div>
-  </main>
 
+    </div>
+
+ 
+
+  </main>
+</div>
 </body>
 
+<!-- image data -->
+      
+
+
+
+<!-- followers -->
+   
 </html>
 {% endblock%}
