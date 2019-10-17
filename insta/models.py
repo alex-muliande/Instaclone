@@ -12,8 +12,8 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} Profile' 
-    def save(self):
-        super().save()
+    def save(self,*args, **kwargs):
+        super().save(*args, **kwargs)
 
 
 class Post(models.Model):
@@ -32,3 +32,12 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'pk': self.pk})
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE,related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    comment = models.CharField(max_length=100)
+    created_date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.comment

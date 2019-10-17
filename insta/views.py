@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView,DetailView,CreateView,UpdateView
+from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 from django.http import HttpResponse,HttpResponseRedirect
 from .models import Post
+from users.forms import CommentForm
 
 
 # Create your views here.
@@ -43,9 +44,20 @@ class PostUpdateView(LoginRequiredMixin,UserPassesTestMixin,  UpdateView):
 
     def test_func(self):
         post = self.get_object()
-        if self.request.user == post.user:
+        if self.request.user == post.profile:
             return True
         return False
+
+class PostDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
+    model = Post
+    success_url ='/'
+
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.profile:
+            return True
+        return False
+
 
 
 
@@ -60,3 +72,31 @@ def likePost(request,image_id):
       image.likes.add(request.user)
       is_liked = True
   return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def comment(request, post_id):
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.user = request.user
+            post = Post.get_post(post_id)
+            comment.post = post
+            comment.save()
+            return redirect('posts')
+    else:
+        comment_form = CommentForm()
+    context = {
+        "comment_form":comment_form,
+    }
+    return render(request, 'index.html', context)
+
+
+@login_required
+def commenting(request, post_id):
+    posts = Post.objects.get(pk=post_id)
+    context ={
+        "posts":posts,
+    }
+    return render(request, 'comments.html', context)
