@@ -44,7 +44,7 @@ class PostUpdateView(LoginRequiredMixin,UserPassesTestMixin,  UpdateView):
 
     def test_func(self):
         post = self.get_object()
-        if self.request.user == post.profile:
+        if self.request.user.profile == post.profile:
             return True
         return False
 
@@ -54,7 +54,7 @@ class PostDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
 
     def test_func(self):
         post = self.get_object()
-        if self.request.user == post.profile:
+        if self.request.user.profile == post.profile:
             return True
         return False
 
