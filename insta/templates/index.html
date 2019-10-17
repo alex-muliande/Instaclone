@@ -36,7 +36,7 @@
                 {{post.comments.all.count}} {{post.comments.all.pluralize}}</a>
             </div>
             <div class="comment mt-2">
-                <form action="{% url 'comment' post.id %}" method="post">
+                <form action="{% url 'comment' post.id %}" method="post" enctype="multipart/form-data"> 
                   {%csrf_token%}
                   {{CommentForm}}
                   <input type="submit" class="btn btn-info"  value="Comment">
@@ -52,12 +52,14 @@
       <div class="col-md-4">
         <div class="content-section" id="col">
           <p class='text-muted' style="text-align: center"> Our Stories.
-            <ul class="list-group">
-              <li class="list-group-item list-group-item-light">Stories</li>
-              <br>
+            {% for post in posts %}
+            <div class="list-group">
+              <a href="#" class="list-group-item list-group-item-light"><img src = "{{ post.profile.profile_picture.url }}" class = "img-responsive img-insta">{{ post.profile.user.username }}</a>
+              <!-- <br>
               <p class='text-muted'>People you can Follow.
-                <li class="list-group-item list-group-item-light">Follow</li>
-            </ul>
+                <li class="list-group-item list-group-item-light">Follow</li> -->
+            </div>
+            {% endfor %}
           </p>
         </div>
       </div>
