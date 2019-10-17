@@ -104,3 +104,7 @@ a.article-title:hover {
 #col{
 position: fixed;
 }
+.img-insta{
+  width: 50px;
+  height: auto;
+}
