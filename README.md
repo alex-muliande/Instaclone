@@ -24,11 +24,11 @@ Alex Muliande
 ##### Open the command-line and run the following command to open a directory:
   - ```cd your preferred directory``` => ```cd Desktop```
 ##### Git clone the project on your current directory by:
-  - ```git clone ```.
+  - ```git clone https://github.com/alex-muliande/Instaclone.git```.
 ##### Open the project on your terminal:
   - ```atom . or code .``` , according to the type of your text editor.
 ##### Move to your project directory:
-  - ```cd Gallery```.
+  - ```cd Instaclone```.
 ##### Install virtual environment using python:
   - ```python3.6 -m venv virtual```, check your project to confirm you have a folder called virtual,
   - then activate it by running ```source virtual/bin/activate```
