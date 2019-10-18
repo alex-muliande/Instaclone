@@ -1,45 +1,30 @@
 from django.test import TestCase
-from .models import Post,Comment
+from .models import Post,Comment,Profile
+
 
 # Create your tests here.
 class Post(TestCase):
 
     #set up method
     def setUp(self):
-        self.nairobi= Post(location='nairobi')
+        self.caption= Post(location='caption')
 
     def test_instance(self):
-        self.assertTrue(isinstance(self.nairobi,Post))
+        self.assertTrue(isinstance(self.caption,Post))
 
     def tearDown(self):
         Post.objects.all().delete()
 
     def test_save_method(self):
-        self.nairobi.save_location()
+        self.caption.save_location()
         post = Post.objects.all()
         self.assertTrue(len(post)>0)
 
     def test_delete_method(self):
-        self.nairobi.delete_location('nairobi')
+        self.caption.delete_location('caption')
         post = Post.objects.all()
         self.assertTrue(len(post)==0)
 
-from .models import Image,Profile
-
-class ImageTestClass(TestCase):
-   def setUp(self):
-       self.image=Image(name='index',)
-       self.image.save_image()
-   def test_instance(self):
-       self.assertTrue(isinstance(self.image,Image))
-   def test_save_image(self):
-       self.image.save_image()
-       images = Image.objects.all()
-       self.assertTrue(len(images) > 0)
-   def test_delete_image(self):
-       self.image.delete_image()
-       category = Image.objects.all()
-       self.assertTrue(len(image) == 0)
 class ProfileTestClass(TestCase):
    def setUp(self):
        self.profile=Profile()
