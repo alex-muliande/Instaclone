@@ -6,7 +6,7 @@ Alex Muliande
 
 
 ### Screenshot
-<img src="" width="1000">
+<img src="https://github.com/alex-muliande/Instaclone/blob/master/Screenshot%20from%202019-10-18%2022-58-11.png" width="1000">
 
 ### Requirements
 ##### These are the requirements you need to get the project running locally on your machine:
